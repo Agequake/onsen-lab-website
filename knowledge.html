@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>湯治・未病の知識 — 温泉研究所</title>
+  <meta name="description" content="湯治の歴史、未病の思想、入浴と暮らしにまつわるコラム記事。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 帯写真・記事写真 */
+    .photo-obi {
+      width: 100%;
+      height: clamp(200px, 38vw, 360px);
+      overflow: hidden;
+      border-bottom: 1px solid var(--keisen);
+      position: relative;
+    }
+    .photo-obi img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+      filter: sepia(22%) brightness(0.87) contrast(1.05);
+      display: block;
+    }
+    .photo-obi__caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.25rem;
+      font-size: 0.62rem;
+      color: rgba(242,236,224,0.75);
+      letter-spacing: 0.15em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    /* 記事行の写真 */
+    .article-row__img {
+      width: 100%;
+      height: 110px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+    .article-row__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(20%) brightness(0.9);
+      display: block;
+    }
+
+    .knowledge-intro {
+      padding: 2rem 0 3rem;
+    }
+
+    .knowledge-intro p {
+      font-size: 0.9rem;
+      line-height: 2.3;
+      color: var(--kogecha);
+    }
+
+    /* 記事一覧 */
+    .article-list {
+      border-top: 1px solid var(--keisen);
+      padding-bottom: 5rem;
+    }
+
+    .article-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.75rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--keisen-lt);
+      align-items: start;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .article-row:hover { background: rgba(196,180,154,0.1); }
+
+    .article-row__tag {
+      text-align: center;
+      padding-top: 3px;
+    }
+
+    .article-row__tag-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--shu);
+      border: 1px solid var(--shu);
+      padding: 3px 6px;
+      line-height: 1.6;
+    }
+
+    .article-row__title {
+      font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--sumi);
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+    }
+
+    .article-row__excerpt {
+      font-size: 0.83rem;
+      color: var(--kogecha);
+      line-height: 2.1;
+    }
+
+    .article-row__read {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.72rem;
+      color: var(--shu);
+      letter-spacing: 0.12em;
+      border-bottom: 1px solid var(--shu);
+      padding-bottom: 1px;
+    }
+
+    .tsuzuku {
+      padding: 2rem 0;
+      font-size: 0.78rem;
+      color: var(--susumi);
+      letter-spacing: 0.1em;
+      line-height: 2;
+    }
+
+    @media (max-width: 520px) {
+      .article-row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .article-row__tag { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo_kihon.jpg" alt="温泉研究所">
+      <div class="header-logo-name">
+        温泉研究所
+        <small>湯治文化の研究・教育・監修</small>
+      </div>
+    </a>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="about.html">研究所について</a></li>
+        <li><a href="director.html">運営者から</a></li>
+        <li><a href="knowledge.html" class="active">湯治・未病の知識</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="page-body">
+  <!-- ヒーロー -->
+  <div class="content-hero">
+    <span class="shu-badge">研究所の発信</span>
+    <h1 class="content-hero__title">湯治・未病の知識</h1>
+    <p class="content-hero__subtitle">歴史・思想・暮らしの知恵</p>
+  </div>
+
+  <!-- 帯写真：樋の湯の花 -->
+  <div class="photo-obi">
+    <img src="assets/photos/yunohana_3.jpg" alt="樋に結晶する湯の花">
+    <span class="photo-obi__caption">湯の花 ― 温泉が長い時間をかけて生み出す結晶</span>
+  </div>
+
+  <div class="container">
+    <div class="knowledge-intro">
+      <p>
+        湯治の歴史、未病の思想、入浴と暮らしの知恵を、温泉研究所の視点でお伝えします。<br>
+        数値や統計ではなく、先人から伝わる言葉と経験を、現代の暮らしに引き寄せながら読み解いていきます。
+      </p>
+    </div>
+
+    <div class="article-list">
+
+      <div class="article-row">
+        <div class="article-row__tag">
+          <span class="article-row__tag-label">歴　史</span>
+        </div>
+        <div>
+          <div class="article-row__img">
+            <img src="assets/photos/yunohana_1.jpg" alt="湯の花のクローズアップ">
+          </div>
+          <h2 class="article-row__title">湯治とは何か ― 日本古来の「整える」文化</h2>
+          <p class="article-row__excerpt">
+            現代では旅行や娯楽として捉えられがちな温泉ですが、湯治にはもともと別の意味がありました。江戸の頃から続く湯治場の記録を手がかりに、その本来の姿を読み解きます。
+          </p>
+          <a href="knowledge-01.html" class="article-row__read">読む</a>
+        </div>
+      </div>
+
+      <div class="article-row">
+        <div class="article-row__tag">
+          <span class="article-row__tag-label">思　想</span>
+        </div>
+        <div>
+          <div class="article-row__img">
+            <img src="assets/photos/engawa.jpg" alt="縁側から望む日本庭園">
+          </div>
+          <h2 class="article-row__title">「未病」という思想 ― 病気になる前に整える</h2>
+          <p class="article-row__excerpt">
+            「未病」という言葉は、東洋医学に古くから伝わる概念です。冷え、疲労、眠りの浅さなど、病名のつかない不調に向き合うための知恵として、今あらためて注目されています。
+          </p>
+          <a href="knowledge-02.html" class="article-row__read">読む</a>
+        </div>
+      </div>
+
+      <div class="article-row">
+        <div class="article-row__tag">
+          <span class="article-row__tag-label">日々の習慣</span>
+        </div>
+        <div>
+          <div class="article-row__img">
+            <img src="assets/photos/niwa_okashi.jpg" alt="庭を背景に並ぶ湯飲みとタオル">
+          </div>
+          <h2 class="article-row__title">毎日の入浴を「湯治」にする ― 家庭でできる習慣の話</h2>
+          <p class="article-row__excerpt">
+            温泉地まで行かなくても、日々の入浴を「整える時間」として丁寧に扱うことができます。湯治の考え方を日常に取り入れるための、基本的な視点をご紹介します。
+          </p>
+          <a href="knowledge-03.html" class="article-row__read">読む</a>
+        </div>
+      </div>
+
+      <div class="article-row">
+        <div class="article-row__tag">
+          <span class="article-row__tag-label">文　化</span>
+        </div>
+        <div>
+          <div class="article-row__img">
+            <img src="assets/photos/furhon.jpg" alt="湯治場の古い文献と看板">
+          </div>
+          <h2 class="article-row__title">湯治場の言葉 ― 温泉地に伝わる風習と言い伝え</h2>
+          <p class="article-row__excerpt">
+            各地の温泉地には、入浴の作法や禁忌、季節ごとの湯の使い方など、長年の経験が積み重なった言い伝えが残っています。数値ではなく言葉として伝わってきた知恵の断片を集めます。
+          </p>
+          <a href="knowledge-04.html" class="article-row__read">読む</a>
+        </div>
+      </div>
+
+      <div class="article-row">
+        <div class="article-row__tag">
+          <span class="article-row__tag-label">今日の視点</span>
+        </div>
+        <div>
+          <div class="article-row__img">
+            <img src="assets/photos/bungo.jpg" alt="書物を前に思索する文士">
+          </div>
+          <h2 class="article-row__title">都市に広がる「湯」の空間 ― 伝統の視点から見直す</h2>
+          <p class="article-row__excerpt">
+            近年、都心の再開発でも温泉にまつわる空間づくりが進んでいると報じられています。この流れを、市場データとしてではなく、湯治の文化という視点から読み解いてみます。
+          </p>
+          <a href="knowledge-05.html" class="article-row__read">読む</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="tsuzuku">※ 記事は随時追加していきます。</p>
+  </div>
+</main>
+
+<!-- フッター -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-emblem">
+      <img src="assets/logo_kihon_touka_nashi.jpg" alt="温泉研究所">
+    </div>
+    <hr class="footer-rule">
+    <ul class="footer-nav">
+      <li><a href="about.html">研究所について</a></li>
+      <li><a href="director.html">運営者から</a></li>
+      <li><a href="knowledge.html">湯治・未病の知識</a></li>
+    </ul>
+    <p class="footer-line-cta">
+      湯治についてもっと深く知りたい方は、<br>
+      <a href="#">温泉研究所の公式LINEもご覧ください</a>
+    </p>
+    <p class="footer-agequake">
+      当研究所は、<a href="#">Agequake社</a>の事業と連携しながら、<br>
+      湯治文化の研究・教育・監修を行っております。
+    </p>
+    <p class="footer-contact">
+      お問い合わせ：<a href="mailto:onsenresearch@gmail.com">onsenresearch@gmail.com</a>
+    </p>
+    <hr class="footer-rule">
+    <p class="footer-copy">温泉研究所　1993年6月設立</p>
+  </div>
+</footer>
+
+</body>
+</html>

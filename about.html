@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>研究所について — 温泉研究所</title>
+  <meta name="description" content="温泉研究所の社会的役割、思想的背景、Agequakeとの関係性について。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 三本柱 */
+    .hashira-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--keisen);
+    }
+
+    .hashira {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--keisen-lt);
+      align-items: start;
+    }
+
+    .hashira__ban {
+      text-align: center;
+    }
+
+    .hashira__ban-num {
+      display: block;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--sumi);
+      line-height: 1;
+      margin-bottom: 4px;
+      letter-spacing: 0;
+    }
+
+    .hashira__ban-label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: var(--shu);
+      border: 1px solid var(--shu);
+      padding: 2px 6px;
+    }
+
+    .hashira__title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--sumi);
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .hashira__body {
+      font-size: 0.88rem;
+      line-height: 2.2;
+      color: var(--kogecha);
+    }
+
+    /* 全幅帯写真 */
+    .photo-obi {
+      width: 100%;
+      height: clamp(220px, 40vw, 400px);
+      overflow: hidden;
+      border-top: 1px solid var(--keisen);
+      border-bottom: 1px solid var(--keisen);
+      position: relative;
+    }
+
+    .photo-obi img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      filter: sepia(20%) brightness(0.88) contrast(1.05);
+      display: block;
+    }
+
+    .photo-obi__caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.25rem;
+      font-size: 0.62rem;
+      color: rgba(242,236,224,0.75);
+      letter-spacing: 0.15em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    /* 思想ブロック（引用）＋写真 */
+    .shiso-wrap {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: stretch;
+      margin: 3rem 0;
+      border-left: 4px solid var(--shu);
+      overflow: hidden;
+    }
+
+    .shiso-photo {
+      overflow: hidden;
+    }
+
+    .shiso-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(25%) brightness(0.85);
+      display: block;
+    }
+
+    /* 思想ブロック（引用） */
+    .shiso-block {
+      background: var(--washi-dk);
+      padding: 2.5rem 2rem 2.5rem 2.5rem;
+    }
+
+    @media (max-width: 560px) {
+      .shiso-wrap { grid-template-columns: 1fr; }
+      .shiso-photo { height: 160px; }
+    }
+
+    .shiso-block p {
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      line-height: 2.4;
+      color: var(--sumi);
+      margin-bottom: 1rem;
+    }
+
+    .shiso-block small {
+      font-size: 0.78rem;
+      color: var(--susumi);
+      line-height: 2;
+      display: block;
+    }
+
+    /* 関係性一覧表 */
+    .kankei-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin: 1.5rem 0;
+    }
+
+    .kankei-table th,
+    .kankei-table td {
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--keisen);
+      line-height: 2;
+      vertical-align: top;
+    }
+
+    .kankei-table th {
+      background: var(--washi-dk);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      width: 130px;
+      white-space: nowrap;
+      color: var(--sumi);
+    }
+
+    .kankei-table td {
+      color: var(--kogecha);
+    }
+
+    @media (max-width: 520px) {
+      .hashira {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .hashira__ban {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo_kihon.jpg" alt="温泉研究所">
+      <div class="header-logo-name">
+        温泉研究所
+        <small>湯治文化の研究・教育・監修</small>
+      </div>
+    </a>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="about.html" class="active">研究所について</a></li>
+        <li><a href="director.html">運営者から</a></li>
+        <li><a href="knowledge.html">湯治・未病の知識</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="page-body">
+  <!-- ヒーロー -->
+  <div class="content-hero">
+    <span class="shu-badge">当研究所について</span>
+    <h1 class="content-hero__title">研究所について</h1>
+    <p class="content-hero__subtitle">温泉研究所の役割・思想・沿革</p>
+  </div>
+
+  <!-- 自己定義 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="sec-heading">温泉研究所とは</h2>
+      <div class="section__body">
+        <p>
+          温泉研究所は、科学的検証を行う研究機関ではありません。
+        </p>
+        <p>
+          日本古来の湯治の知恵を読み解き、現代の暮らしの言葉に編み直す、文化の翻訳者です。
+        </p>
+        <p>
+          「研究所」という名前の「研究」とは、論文や統計ではなく、先人が積み重ねてきた知恵・文献・言い伝えを丁寧に集め、読み解き、今の生活に合う形で語り直していくことを意味しています。
+        </p>
+        <p>
+          1993年6月の設立以来、湯治・温泉文化の読み解きを続けてまいりました。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 全幅帯写真：紅葉の露天風呂 -->
+  <div class="photo-obi">
+    <img src="assets/photos/roten.jpg" alt="紅葉と露天風呂">
+    <span class="photo-obi__caption">日本の四季と湯治文化</span>
+  </div>
+
+  <!-- 三本柱 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="sec-heading">当研究所の三本柱</h2>
+      <div class="hashira-list">
+        <div class="hashira">
+          <div class="hashira__ban">
+            <span class="hashira__ban-num">一</span>
+            <span class="hashira__ban-label">監修</span>
+          </div>
+          <div>
+            <p class="hashira__title">監修機関としての役割</p>
+            <p class="hashira__body">
+              整巡湯をはじめとする商品・サービスを監修する第三者的な立場を担います。「お墨付きを与える側」として、商品の信頼性・専門性を補強しながら、販売主体の営利的な色を薄める役割を持っています。
+            </p>
+          </div>
+        </div>
+        <div class="hashira">
+          <div class="hashira__ban">
+            <span class="hashira__ban-num">二</span>
+            <span class="hashira__ban-label">教育</span>
+          </div>
+          <div>
+            <p class="hashira__title">知識の教育・啓発</p>
+            <p class="hashira__body">
+              湯治の歴史、温泉文化、入浴健康法、未病の考え方などを、施術院に通う患者や一般の生活者に向けてわかりやすく伝えます。知識を届けることそのものが目的であり、来院や購買はその結果として自然に生まれるものという位置づけです。
+            </p>
+          </div>
+        </div>
+        <div class="hashira">
+          <div class="hashira__ban">
+            <span class="hashira__ban-num">三</span>
+            <span class="hashira__ban-label">継承</span>
+          </div>
+          <div>
+            <p class="hashira__title">文化継承と啓発の拠点</p>
+            <p class="hashira__body">
+              娯楽・贅沢として消費されがちな現代の温泉観に対し、「病気になる前に整える」という湯治本来の思想を再提示します。温泉地に伝わる風習や言葉を集め、次の世代に語り継いでいく拠点としての役割も担います。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 思想的背景 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="sec-heading">思想的背景</h2>
+      <div class="section__body">
+        <p>
+          日本古来の「湯治」は、病気になってから治すためのものではなく、病気になる前に体を整えるという「未病」の思想そのものでした。
+        </p>
+        <div class="shiso-wrap">
+          <div class="shiso-photo">
+            <img src="assets/photos/gensen.jpg" alt="源泉の流れ">
+          </div>
+          <div class="shiso-block">
+            <p>
+              豪華さや非日常を売りにするのではなく、<br>
+              「毎日の暮らしの中で、無理なく体を整える」という、<br>
+              もともとの湯治の姿に立ち返ること。
+            </p>
+            <small>
+              ※「未病」とは、病気になる前の段階で体の不調を整えるという、東洋医学に由来する考え方です。
+              温泉研究所は、この失われつつある価値を、現代の日常に取り戻したいと考えています。
+            </small>
+          </div>
+        </div>
+        <p>
+          現代では、温泉は娯楽・旅行・贅沢として消費されることが多くなっています。しかし本来の湯治には、冷え・疲労・眠りの浅さといった、病名のつかない不調に向き合うための知恵が蓄積されています。温泉研究所は、そうした先人の知恵を丁寧に読み解き、現代語に翻訳し直す場所です。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agequakeとの関係 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="sec-heading">関係機関について</h2>
+      <div class="section__body">
+        <p>
+          温泉研究所は、Agequake社の事業と連携しながら、湯治文化の研究・教育・監修を行う機関です。この関係性は、当サイトにおいて正面から開示しています。
+        </p>
+        <table class="kankei-table">
+          <tr>
+            <th>Agequake社</th>
+            <td>事業化・商品販売・導入支援・法人営業・提携開拓・収益化を担う、営利会社。</td>
+          </tr>
+          <tr>
+            <th>温泉研究所</th>
+            <td>研究（編集・継承の意味での）・教育・監修・文化継承・啓発を担う。営利を目的としない。</td>
+          </tr>
+        </table>
+        <p>
+          当研究所のページ内には、商品の価格や購入機能は設けておりません。整巡湯などの商品にご興味をお持ちの方は、お近くの提携施術院へお問い合わせください。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- フッター -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-emblem">
+      <img src="assets/logo_kihon_touka_nashi.jpg" alt="温泉研究所">
+    </div>
+    <hr class="footer-rule">
+    <ul class="footer-nav">
+      <li><a href="about.html">研究所について</a></li>
+      <li><a href="director.html">運営者から</a></li>
+      <li><a href="knowledge.html">湯治・未病の知識</a></li>
+    </ul>
+    <p class="footer-line-cta">
+      湯治についてもっと深く知りたい方は、<br>
+      <a href="#">温泉研究所の公式LINEもご覧ください</a>
+    </p>
+    <p class="footer-agequake">
+      当研究所は、<a href="#">Agequake社</a>の事業と連携しながら、<br>
+      湯治文化の研究・教育・監修を行っております。
+    </p>
+    <p class="footer-contact">
+      お問い合わせ：<a href="mailto:onsenresearch@gmail.com">onsenresearch@gmail.com</a>
+    </p>
+    <hr class="footer-rule">
+    <p class="footer-copy">温泉研究所　1993年6月設立</p>
+  </div>
+</footer>
+
+</body>
+</html>

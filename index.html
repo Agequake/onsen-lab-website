@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>温泉研究所</title>
+  <meta name="description" content="日本古来の湯治の知恵を読み解き、現代の暮らしの言葉に編み直す。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ══════════════════════════════════════
+       トップページ専用 — 電子展示室型
+    ══════════════════════════════════════ */
+
+    body { overflow-x: hidden; }
+
+    /* ── ヒーローエリア ──────────────── */
+    .hero {
+      position: relative;
+      height: calc(100svh - 72px);
+      min-height: 480px;
+      max-height: 860px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: sepia(28%) brightness(0.68) contrast(1.06);
+      display: block;
+    }
+
+    /* 上下グラデーションオーバーレイ */
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(26,20,16,0.25) 0%,
+        rgba(26,20,16,0.05) 35%,
+        rgba(26,20,16,0.05) 55%,
+        rgba(26,20,16,0.55) 100%
+      );
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 2rem;
+      animation: heroFadeIn 1.4s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 朱印スタンプ */
+    .hero__shu {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border: 2px solid rgba(139,42,26,0.85);
+      color: rgba(139,42,26,0.85);
+      font-size: 1.8rem;
+      font-weight: 700;
+      transform: rotate(-6deg);
+      margin-bottom: 1.5rem;
+      box-shadow: inset 0 0 0 4px rgba(139,42,26,0.12);
+    }
+
+    .hero__name {
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: 0.55em;
+      color: #f2ece0;
+      line-height: 1.2;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.55);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero__yomi {
+      font-size: clamp(0.62rem, 1.3vw, 0.75rem);
+      letter-spacing: 0.4em;
+      color: rgba(242,236,224,0.55);
+      margin-bottom: 2rem;
+    }
+
+    /* 罫線で囲まれたタグライン */
+    .hero__tagline-wrap {
+      display: inline-block;
+      border-top: 1px solid rgba(196,180,154,0.4);
+      border-bottom: 1px solid rgba(196,180,154,0.4);
+      padding: 0.75rem 2rem;
+    }
+
+    .hero__tagline {
+      font-size: clamp(0.82rem, 2vw, 1rem);
+      letter-spacing: 0.22em;
+      color: rgba(242,236,224,0.85);
+      line-height: 2.2;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
+
+    /* 下へのスクロールインジケーター */
+    .hero__indicator {
+      position: absolute;
+      bottom: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      animation: indicatorPulse 2.4s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .hero__indicator-line {
+      display: block;
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, transparent, rgba(242,236,224,0.6));
+    }
+
+    .hero__indicator-arrow {
+      width: 8px;
+      height: 8px;
+      border-right: 1px solid rgba(242,236,224,0.6);
+      border-bottom: 1px solid rgba(242,236,224,0.6);
+      transform: rotate(45deg);
+      margin-top: -4px;
+    }
+
+    @keyframes indicatorPulse {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+      50%       { transform: translateX(-50%) translateY(6px); opacity: 0.8; }
+    }
+
+    /* ── 定義文帯 ────────────────────── */
+    .teigi-obi {
+      background: var(--kogecha);
+      padding: 2.75rem 2rem;
+      text-align: center;
+      border-bottom: 3px double rgba(196,180,154,0.4);
+    }
+
+    .teigi-obi__text {
+      max-width: 580px;
+      margin: 0 auto;
+      font-size: clamp(0.86rem, 2vw, 1.02rem);
+      line-height: 2.7;
+      letter-spacing: 0.15em;
+      color: rgba(242,236,224,0.8);
+    }
+
+    /* ── 章メニュー ──────────────────── */
+    .sho-menu {
+      background: var(--washi);
+      padding: 3.5rem 2rem 4.5rem;
+    }
+
+    .sho-menu__label {
+      text-align: center;
+      font-size: 0.68rem;
+      letter-spacing: 0.45em;
+      color: var(--susumi);
+      margin-bottom: 2.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .sho-menu__label::before,
+    .sho-menu__label::after {
+      content: '';
+      display: block;
+      width: 52px;
+      height: 1px;
+      background: var(--keisen);
+    }
+
+    /* 3枚グリッド */
+    .sho-grid {
+      max-width: 780px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    /* 章カード */
+    .sho-card {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--keisen);
+      text-decoration: none;
+      transition: transform 0.32s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.32s;
+      aspect-ratio: 3 / 4.2;
+      background: var(--washi-dk);
+      /* 章ごとに遅延フェードイン */
+      opacity: 0;
+      animation: cardReveal 0.7s ease forwards;
+    }
+
+    .sho-card:nth-child(1) { animation-delay: 0.15s; }
+    .sho-card:nth-child(2) { animation-delay: 0.28s; }
+    .sho-card:nth-child(3) { animation-delay: 0.41s; }
+
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .sho-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(26,20,16,0.18);
+    }
+
+    /* 写真 */
+    .sho-card__photo {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .sho-card__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(22%) brightness(0.8) contrast(1.05);
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .sho-card:hover .sho-card__photo img {
+      transform: scale(1.05);
+    }
+
+    /* グラデーションオーバーレイ */
+    .sho-card__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to top,
+        rgba(26,20,16,0.78) 0%,
+        rgba(26,20,16,0.18) 52%,
+        rgba(26,20,16,0.04) 100%
+      );
+      transition: background 0.32s;
+    }
+
+    .sho-card:hover .sho-card__overlay {
+      background: linear-gradient(
+        to top,
+        rgba(26,20,16,0.85) 0%,
+        rgba(26,20,16,0.28) 52%,
+        rgba(26,20,16,0.08) 100%
+      );
+    }
+
+    /* 右上の章番号バッジ */
+    .sho-card__badge {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 2;
+      border: 1px solid rgba(242,236,224,0.3);
+      padding: 3px 7px;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      color: rgba(242,236,224,0.6);
+      background: rgba(26,20,16,0.2);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .sho-card:hover .sho-card__badge {
+      border-color: rgba(139,42,26,0.7);
+      color: rgba(242,236,224,0.9);
+      background: rgba(139,42,26,0.35);
+    }
+
+    /* カード下部テキスト */
+    .sho-card__body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 1.4rem 1.1rem;
+    }
+
+    .sho-card__num {
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      color: rgba(242,236,224,0.5);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .sho-card__title {
+      font-size: clamp(0.85rem, 1.6vw, 1.02rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #f2ece0;
+      line-height: 1.7;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .sho-card__desc {
+      font-size: 0.65rem;
+      color: rgba(242,236,224,0.6);
+      letter-spacing: 0.07em;
+      line-height: 1.85;
+      display: block;
+    }
+
+    /* ── 綱領（Philosophy / Mission / Vision）── */
+    .koryo-bar {
+      background: var(--washi-dk);
+      border-top: 3px double var(--keisen);
+      border-bottom: 3px double var(--keisen);
+      padding: 3rem 2rem;
+    }
+
+    .koryo-bar__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .koryo-bar__item {
+      padding: 0 1.25rem;
+      text-align: center;
+      border-right: 1px solid var(--keisen-lt);
+    }
+
+    .koryo-bar__item:last-child { border-right: none; }
+
+    .koryo-bar__label {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--shu);
+      border: 1px solid var(--shu);
+      padding: 2px 7px;
+      margin-bottom: 0.75rem;
+    }
+
+    .koryo-bar__text {
+      font-size: clamp(0.78rem, 1.4vw, 0.92rem);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--sumi);
+      line-height: 1.9;
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    /* ── レスポンシブ ────────────────── */
+    @media (max-width: 700px) {
+      .sho-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 420px;
+      }
+
+      .sho-card {
+        aspect-ratio: 5 / 3;
+      }
+
+      .koryo-bar__inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .koryo-bar__item {
+        border-right: none;
+        border-bottom: 1px solid var(--keisen-lt);
+        padding: 0 1rem 1.5rem;
+      }
+
+      .koryo-bar__item:last-child { border-bottom: none; padding-bottom: 0; }
+    }
+
+    @media (max-width: 420px) {
+      .sho-grid {
+        max-width: 340px;
+      }
+
+      .hero__shu {
+        width: 52px;
+        height: 52px;
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ ヘッダー ══════════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo_kihon.jpg" alt="温泉研究所">
+      <div class="header-logo-name">
+        温泉研究所
+        <small>湯治文化の研究・教育・監修</small>
+      </div>
+    </a>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="about.html">研究所について</a></li>
+        <li><a href="director.html">運営者から</a></li>
+        <li><a href="knowledge.html">湯治・未病の知識</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══ ヒーロー — 入口画面 ══════════════════════════ -->
+  <section class="hero" aria-label="温泉研究所 入口">
+    <div class="hero__bg">
+      <img src="assets/photos/asayake.jpg" alt="朝焼けの露天風呂">
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__shu" aria-hidden="true">湯</div>
+      <h1 class="hero__name">温泉研究所</h1>
+      <p class="hero__yomi">おんせんけんきゅうじょ</p>
+      <div class="hero__tagline-wrap">
+        <p class="hero__tagline">
+          湯治の知恵を、現代の暮らしへ。<br>
+          病気になる前に、体を整える。
+        </p>
+      </div>
+    </div>
+
+    <div class="hero__indicator" aria-hidden="true">
+      <span class="hero__indicator-line"></span>
+      <span class="hero__indicator-arrow"></span>
+    </div>
+  </section>
+
+  <!-- ══ 定義文帯 ══════════════════════════════════════ -->
+  <div class="teigi-obi">
+    <p class="teigi-obi__text">
+      日本古来の湯治の知恵を読み解き、<br>
+      現代の暮らしの言葉に編み直す、文化の翻訳者です。
+    </p>
+  </div>
+
+  <!-- ══ 章メニュー ══════════════════════════════════ -->
+  <section class="sho-menu" aria-label="各章の案内">
+    <p class="sho-menu__label">各章へお進みください</p>
+
+    <div class="sho-grid">
+
+      <!-- 第一章：研究所について -->
+      <a href="about.html" class="sho-card">
+        <div class="sho-card__photo">
+          <img src="assets/photos/roten.jpg" alt="研究所について">
+        </div>
+        <div class="sho-card__overlay"></div>
+        <span class="sho-card__badge">第一章</span>
+        <div class="sho-card__body">
+          <span class="sho-card__num">Chapter I</span>
+          <span class="sho-card__title">研究所について</span>
+          <span class="sho-card__desc">役割・思想的背景・<br>Agequakeとの関係</span>
+        </div>
+      </a>
+
+      <!-- 第二章：運営者から -->
+      <a href="director.html" class="sho-card">
+        <div class="sho-card__photo">
+          <img src="assets/photos/shinrin.jpg" alt="運営者から">
+        </div>
+        <div class="sho-card__overlay"></div>
+        <span class="sho-card__badge">第二章</span>
+        <div class="sho-card__body">
+          <span class="sho-card__num">Chapter II</span>
+          <span class="sho-card__title">運営者から</span>
+          <span class="sho-card__desc">なぜ「研究所」と<br>名乗るのか</span>
+        </div>
+      </a>
+
+      <!-- 第三章：湯治・未病の知識 -->
+      <a href="knowledge.html" class="sho-card">
+        <div class="sho-card__photo">
+          <img src="assets/photos/yunohana_3.jpg" alt="湯治・未病の知識">
+        </div>
+        <div class="sho-card__overlay"></div>
+        <span class="sho-card__badge">第三章</span>
+        <div class="sho-card__body">
+          <span class="sho-card__num">Chapter III</span>
+          <span class="sho-card__title">湯治・未病の知識</span>
+          <span class="sho-card__desc">歴史・思想・<br>日々の入浴のコラム</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ══ 綱領 ══════════════════════════════════════════ -->
+  <div class="koryo-bar">
+    <div class="koryo-bar__inner">
+      <div class="koryo-bar__item">
+        <span class="koryo-bar__label">哲学</span>
+        <p class="koryo-bar__text">湯治の知恵を、<br>現代の暮らしへ。</p>
+      </div>
+      <div class="koryo-bar__item">
+        <span class="koryo-bar__label">使命</span>
+        <p class="koryo-bar__text">温泉の可能性を研究し、<br>未病改善の選択肢を広げる。</p>
+      </div>
+      <div class="koryo-bar__item">
+        <span class="koryo-bar__label">展望</span>
+        <p class="koryo-bar__text">湯治を、もっと身近に。<br>もっと自由に。</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══ フッター ══════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-emblem">
+      <img src="assets/logo_kihon_touka_nashi.jpg" alt="温泉研究所">
+    </div>
+    <hr class="footer-rule">
+    <ul class="footer-nav">
+      <li><a href="about.html">研究所について</a></li>
+      <li><a href="director.html">運営者から</a></li>
+      <li><a href="knowledge.html">湯治・未病の知識</a></li>
+    </ul>
+    <p class="footer-line-cta">
+      湯治についてもっと深く知りたい方は、<br>
+      <a href="#">温泉研究所の公式LINEもご覧ください</a>
+    </p>
+    <p class="footer-agequake">
+      当研究所は、<a href="#">Agequake社</a>の事業と連携しながら、<br>
+      湯治文化の研究・教育・監修を行っております。
+    </p>
+    <p class="footer-contact">
+      お問い合わせ：<a href="mailto:onsenresearch@gmail.com">onsenresearch@gmail.com</a>
+    </p>
+    <hr class="footer-rule">
+    <p class="footer-copy">温泉研究所　1993年6月設立</p>
+  </div>
+</footer>
+
+</body>
+</html>

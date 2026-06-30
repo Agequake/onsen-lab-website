@@ -1,0 +1,357 @@
+/*
+  温泉研究所 — 共通スタイル
+  テーマ：和紙・墨・格式
+  カラーパレット
+    和紙色   : #f2ece0
+    墨       : #1a1410
+    焦茶     : #3d2b1f
+    煤色     : #5c4a30
+    朱       : #8b2a1a
+    罫線色   : #c4b49a
+    薄茶     : #e8dfd0
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --washi:   #f2ece0;
+  --washi-dk: #e8dfd0;
+  --sumi:    #1a1410;
+  --kogecha:  #3d2b1f;
+  --susumi:   #5c4a30;
+  --shu:      #8b2a1a;
+  --keisen:   #c4b49a;
+  --keisen-lt: #ddd6c8;
+
+  --font-main: 'Noto Serif JP', 'Yu Mincho', '游明朝', 'Hiragino Mincho ProN', serif;
+  --max-w: 800px;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-main);
+  background: var(--washi);
+  color: var(--sumi);
+  line-height: 2;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━
+   ヘッダー
+━━━━━━━━━━━━━━━━━━━━━━━━ */
+.site-header {
+  background: var(--washi);
+  border-bottom: 3px double var(--keisen);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-logo img {
+  height: 52px;
+  width: auto;
+}
+
+.header-logo-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--sumi);
+  line-height: 1.4;
+}
+
+.header-logo-name small {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--susumi);
+  margin-top: 2px;
+}
+
+.site-nav {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.site-nav a {
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  color: var(--kogecha);
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--shu);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+
+.site-nav a:hover::after,
+.site-nav a.active::after {
+  transform: scaleX(1);
+}
+
+.site-nav a.active {
+  color: var(--sumi);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━
+   フッター
+━━━━━━━━━━━━━━━━━━━━━━━━ */
+.site-footer {
+  background: var(--kogecha);
+  color: rgba(242,236,224,0.75);
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.footer-emblem {
+  margin-bottom: 1.5rem;
+}
+
+.footer-emblem img {
+  height: 64px;
+  width: auto;
+  opacity: 0.7;
+}
+
+/* 三重罫線風 */
+.footer-rule {
+  border: none;
+  height: 5px;
+  background: linear-gradient(
+    to bottom,
+    rgba(196,180,154,0.4) 0, rgba(196,180,154,0.4) 1px,
+    transparent 1px, transparent 2px,
+    rgba(196,180,154,0.25) 2px, rgba(196,180,154,0.25) 3px,
+    transparent 3px, transparent 4px,
+    rgba(196,180,154,0.4) 4px, rgba(196,180,154,0.4) 5px
+  );
+  margin: 1.5rem 0;
+}
+
+.footer-nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav a {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: rgba(242,236,224,0.6);
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover { color: rgba(242,236,224,0.9); }
+
+.footer-line-cta {
+  font-size: 0.78rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+  color: rgba(242,236,224,0.65);
+}
+
+.footer-line-cta a {
+  color: rgba(242,236,224,0.85);
+  border-bottom: 1px solid rgba(196,180,154,0.5);
+  padding-bottom: 1px;
+}
+
+.footer-agequake {
+  font-size: 0.7rem;
+  line-height: 2;
+  color: rgba(242,236,224,0.4);
+  margin-bottom: 1.5rem;
+}
+
+.footer-agequake a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: rgba(242,236,224,0.4);
+}
+
+.footer-contact {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: rgba(242,236,224,0.45);
+  margin-bottom: 1.5rem;
+}
+
+.footer-contact a {
+  color: rgba(242,236,224,0.6);
+  border-bottom: 1px solid rgba(196,180,154,0.4);
+  padding-bottom: 1px;
+}
+
+.footer-copy {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(242,236,224,0.3);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━
+   共通 — 文書枠
+━━━━━━━━━━━━━━━━━━━━━━━━ */
+.page-body { padding-top: 0; }
+
+/* 二重罫線の枠飾り */
+.doc-frame {
+  border: 1px solid var(--keisen);
+  outline: 3px solid var(--keisen);
+  outline-offset: 4px;
+  padding: 2.5rem 2rem;
+}
+
+/* セクション見出しスタイル */
+.sec-heading {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--sumi);
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.sec-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--shu);
+}
+
+/* 縦の区切り */
+.keiro {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0;
+  color: var(--keisen);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+}
+
+.keiro::before,
+.keiro::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--keisen);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━
+   コンテンツページ共通ヒーロー
+━━━━━━━━━━━━━━━━━━━━━━━━ */
+.content-hero {
+  background: var(--washi-dk);
+  border-bottom: 3px double var(--keisen);
+  padding: 3.5rem 2rem;
+  text-align: center;
+}
+
+.content-hero__title {
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--sumi);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.content-hero__subtitle {
+  font-size: 0.78rem;
+  color: var(--susumi);
+  letter-spacing: 0.2em;
+}
+
+/* 朱印風バッジ */
+.shu-badge {
+  display: inline-block;
+  border: 2px solid var(--shu);
+  color: var(--shu);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  padding: 3px 10px;
+  margin-bottom: 1rem;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━
+   本文共通
+━━━━━━━━━━━━━━━━━━━━━━━━ */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--keisen-lt);
+}
+
+.section:last-child { border-bottom: none; }
+
+.section__body {
+  font-size: 0.92rem;
+  line-height: 2.3;
+  color: var(--kogecha);
+}
+
+.section__body p + p { margin-top: 1.5em; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━
+   レスポンシブ
+━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 640px) {
+  .site-nav { gap: 1.2rem; }
+  .site-nav a { font-size: 0.74rem; }
+  .header-logo-name { font-size: 0.95rem; }
+  .footer-nav { flex-wrap: wrap; gap: 1rem; }
+}
+
+@media (max-width: 420px) {
+  .site-nav { display: none; }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運営者から — 温泉研究所</title>
+  <meta name="description" content="なぜ「研究所」と名乗るのか。温泉研究所 運営者による語り。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 帯写真 */
+    .photo-obi {
+      width: 100%;
+      height: clamp(200px, 38vw, 380px);
+      overflow: hidden;
+      border-bottom: 1px solid var(--keisen);
+      position: relative;
+    }
+    .photo-obi img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: sepia(20%) brightness(0.85) contrast(1.05);
+      display: block;
+    }
+    .photo-obi__caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.25rem;
+      font-size: 0.62rem;
+      color: rgba(242,236,224,0.75);
+      letter-spacing: 0.15em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .article-list {
+      padding: 3rem 0;
+    }
+
+    .article-card {
+      display: block;
+      padding: 2rem 1rem 2rem 0;
+      border-bottom: 1px solid var(--keisen-lt);
+      transition: background 0.2s;
+    }
+
+    .article-card:first-child { border-top: 1px solid var(--keisen-lt); }
+    .article-card:hover { background: rgba(196,180,154,0.1); padding-left: 0.5rem; }
+
+    .article-card__meta {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: var(--susumi);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .article-card__meta::before {
+      content: '◆';
+      font-size: 0.5rem;
+      color: var(--shu);
+    }
+
+    .article-card__title {
+      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--sumi);
+      margin-bottom: 0.6rem;
+      line-height: 1.6;
+    }
+
+    .article-card__excerpt {
+      font-size: 0.85rem;
+      color: var(--kogecha);
+      line-height: 2.1;
+    }
+
+    .article-card__read {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--shu);
+      letter-spacing: 0.12em;
+      border-bottom: 1px solid var(--shu);
+      padding-bottom: 1px;
+    }
+
+    .tsuzuku {
+      padding: 2rem 0 4rem;
+      font-size: 0.78rem;
+      color: var(--susumi);
+      letter-spacing: 0.1em;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo_kihon.jpg" alt="温泉研究所">
+      <div class="header-logo-name">
+        温泉研究所
+        <small>湯治文化の研究・教育・監修</small>
+      </div>
+    </a>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="about.html">研究所について</a></li>
+        <li><a href="director.html" class="active">運営者から</a></li>
+        <li><a href="knowledge.html">湯治・未病の知識</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="page-body">
+  <!-- ヒーロー -->
+  <div class="content-hero">
+    <span class="shu-badge">運営者より</span>
+    <h1 class="content-hero__title">運営者から</h1>
+    <p class="content-hero__subtitle">温泉研究所 運営者による一人称の語り</p>
+  </div>
+
+  <!-- 帯写真：森を望む内湯 -->
+  <div class="photo-obi">
+    <img src="assets/photos/shinrin.jpg" alt="森を望む内湯">
+    <span class="photo-obi__caption">静寂の中に、整える時間がある</span>
+  </div>
+
+  <!-- 記事一覧 -->
+  <div class="container">
+    <div class="article-list">
+      <a href="director-01.html" class="article-card">
+        <p class="article-card__meta">温泉研究所 運営者</p>
+        <h2 class="article-card__title">なぜ「研究所」と名乗るのか</h2>
+        <p class="article-card__excerpt">
+          温泉研究所という名前に、最初から違和感を持たれる方もいると思います。研究所といえば、白衣を着た人たちが実験をしている場所を想像するでしょう。私たちはそういう場所ではありません。では、なぜこの名前なのか。
+        </p>
+        <span class="article-card__read">続きを読む</span>
+      </a>
+    </div>
+    <p class="tsuzuku">※ 運営者からの言葉は、今後も書き足していく予定です。</p>
+  </div>
+</main>
+
+<!-- フッター -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-emblem">
+      <img src="assets/logo_kihon_touka_nashi.jpg" alt="温泉研究所">
+    </div>
+    <hr class="footer-rule">
+    <ul class="footer-nav">
+      <li><a href="about.html">研究所について</a></li>
+      <li><a href="director.html">運営者から</a></li>
+      <li><a href="knowledge.html">湯治・未病の知識</a></li>
+    </ul>
+    <p class="footer-line-cta">
+      湯治についてもっと深く知りたい方は、<br>
+      <a href="#">温泉研究所の公式LINEもご覧ください</a>
+    </p>
+    <p class="footer-agequake">
+      当研究所は、<a href="#">Agequake社</a>の事業と連携しながら、<br>
+      湯治文化の研究・教育・監修を行っております。
+    </p>
+    <p class="footer-contact">
+      お問い合わせ：<a href="mailto:onsenresearch@gmail.com">onsenresearch@gmail.com</a>
+    </p>
+    <hr class="footer-rule">
+    <p class="footer-copy">温泉研究所　1993年6月設立</p>
+  </div>
+</footer>
+
+</body>
+</html>
